@@ -9,13 +9,15 @@ import Dish from "./components/dish/Dish";
 import "./assets/App.scss";
 
 function App() {
+  const FilterDishes = dishes.filter((dishes) => dishes.stock);
+
   return (
     <Router>
       <Header />
       <Container className="content">
         <div>
           <Row>
-            {dishes.map((dish, index) => (
+            {FilterDishes.map((dish, index) => (
               <Col key={index} md={4}>
                 <Dish {...dish} />
               </Col>
