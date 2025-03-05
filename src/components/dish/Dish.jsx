@@ -1,11 +1,15 @@
+import Card from "react-bootstrap/Card";
+import "./dish.scss";
 
 function Dish({ img, nom, prix }) {
   return (
-    <div>
-      <img src={img} alt={nom} />
-      <h2>{nom}</h2>
-      <p>{prix} €</p>
-    </div>
+    <Card className="dish-card mb-4" style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={img} alt={nom} />
+      <Card.Body>
+        <Card.Title>{nom}</Card.Title>
+        <Card.Text>Prix: {prix} €</Card.Text>
+      </Card.Body>
+    </Card>
   );
 }
 
