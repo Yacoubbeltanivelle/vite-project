@@ -9,7 +9,7 @@ import Dish from "./components/dish/Dish";
 import "./assets/App.scss";
 
 function App() {
-  const FilterDishes = dishes.filter((dishes) => dishes.stock);
+  const FilterDishes = dishes.filter((dishes) => dishes.stock > 0);
 
   return (
     <Router>
