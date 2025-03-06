@@ -1,4 +1,3 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import dishes from "./components/dish/Dishes";
@@ -11,11 +10,15 @@ import "./assets/App.scss";
 import { useState } from "react";
 
 function App() {
-  const FilterDishes = dishes.filter((dishes) => dishes.stock > 0);
   const [showNewOnly, setShowNewOnly] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   const handleShowNewOnly = () => {
     setShowNewOnly((prev) => !prev);
+  };
+
+  const addToCart = () => {
+    setCartCount(cartCount + 1);
   };
 
   const filteredDishes = dishes.filter(
@@ -23,31 +26,26 @@ function App() {
   );
 
   return (
-    <Router>
-      <Header />
+    <>
+      <Header cartCount={cartCount} />
       <main>
-        <Container className="content">
-          <Button
-            variant="outline-primary mb-5
-        "
-            onClick={handleShowNewOnly}
-          >
+        <Container>
+          <Button variant="outline-primary mb-5" onClick={handleShowNewOnly}>
             {showNewOnly ? "Afficher tous les plats" : "Nouveautés uniquement"}
           </Button>
-          <div>
-            <Row>
-              {filteredDishes.map((dish, index) => (
-                <Col key={index} md={4}>
-                  <Dish {...dish} />
-                </Col>
-              ))}
-            </Row>
-          </div>
+
+          <Row>
+            {filteredDishes.map((dish, index) => (
+              <Col key={index} md={4}>
+                <Dish {...dish} addToCart={addToCart} />
+              </Col>
+            ))}
+          </Row>
         </Container>
       </main>
 
       <Footer />
-    </Router>
+    </>
   );
 }
 

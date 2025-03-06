@@ -3,7 +3,7 @@ import "./dish.scss";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 
-function Dish({ img, nom, prix, isNew }) {
+function Dish({ img, name, price, isNew, addToCart }) {
   return (
     <Card className="dish-card mb-4">
       {isNew && (
@@ -11,17 +11,12 @@ function Dish({ img, nom, prix, isNew }) {
           Nouveau
         </Badge>
       )}
-      <Card.Img variant="top" src={img} alt={nom} />
+      <Card.Img variant="top" src={img} alt={name} />
       <Card.Body>
-        <Card.Title>{nom}</Card.Title>
-        <Card.Text>Prix: {prix} €</Card.Text>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>Prix: {price} €</Card.Text>
       </Card.Body>
-      <Button
-        variant="outline-primary"
-        onClick={() =>
-          alert("Le plat " + nom + " est maintenant dans votre panier")
-        }
-      >
+      <Button variant="outline-primary" onClick={() => addToCart()}>
         Ajouter au panier
       </Button>
     </Card>
