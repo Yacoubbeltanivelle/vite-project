@@ -13,7 +13,7 @@ import { CartContext } from "./context/CartContext";
 function App() {
   const [showNewOnly, setShowNewOnly] = useState(false);
   const { cartCount } = useContext(CartContext);
-  const prevCartCountRef = useRef();
+  const prevCartCountRef = useRef(cartCount);
 
   useEffect(() => {
     prevCartCountRef.current = cartCount; // Stocke la valeur avant le re-render

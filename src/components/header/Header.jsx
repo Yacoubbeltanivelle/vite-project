@@ -3,10 +3,10 @@ import "./Header.scss";
 import logo from "../../assets/images/logo.png";
 
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 
 function Header() {
-  const { cartCount } = useContext(CartContext);
+  const { cartCount } = useContext(useCart);
 
   return (
     <header>

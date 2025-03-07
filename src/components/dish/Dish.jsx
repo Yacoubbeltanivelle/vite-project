@@ -4,10 +4,10 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 
 function Dish({ img, name, price, isNew }) {
-  const { dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(useCart);
   return (
     <Card className="dish-card mb-4">
       {isNew && (
