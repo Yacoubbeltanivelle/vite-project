@@ -2,7 +2,12 @@ import { Navbar, Nav, Container, NavbarCollapse } from "react-bootstrap";
 import "./Header.scss";
 import logo from "../../assets/images/logo.png";
 
-function Header({ cartCount }) {
+import { useContext } from "react";
+import { CartContext } from "../cartContext/CartContext";
+
+function Header() {
+  const { cartCount } = useContext(CartContext);
+
   return (
     <header>
       <Navbar expand="lg" className="bg-body-tertiary">

@@ -11,14 +11,9 @@ import { useState } from "react";
 
 function App() {
   const [showNewOnly, setShowNewOnly] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
 
   const handleShowNewOnly = () => {
     setShowNewOnly((prev) => !prev);
-  };
-
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
   };
 
   const filteredDishes = dishes.filter(
@@ -27,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Header cartCount={cartCount} />
+      <Header />
       <main>
         <Container>
           <Button variant="outline-primary mb-5" onClick={handleShowNewOnly}>
@@ -37,7 +32,7 @@ function App() {
           <Row>
             {filteredDishes.map((dish, index) => (
               <Col key={index} md={4}>
-                <Dish {...dish} addToCart={addToCart} />
+                <Dish {...dish} />
               </Col>
             ))}
           </Row>

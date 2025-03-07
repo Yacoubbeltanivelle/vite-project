@@ -3,7 +3,11 @@ import "./dish.scss";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 
-function Dish({ img, name, price, isNew, addToCart }) {
+import { useContext } from "react";
+import { CartContext } from "../cartContext/CartContext";
+
+function Dish({ img, name, price, isNew }) {
+  const { addToCart } = useContext(CartContext);
   return (
     <Card className="dish-card mb-4">
       {isNew && (
